@@ -1,33 +1,32 @@
 import { withRouter } from 'next/router'
-import fetch from 'isomorphic-unfetch'
+import axios from 'axios'
 
 import Layout from '../components/Layout'
 import Prices from '../components/Prices'
 
-const Index = (props) => {
+const Complex = ({data}) => {
+  console.log(data);
   return (
     <Layout>
       <div>
-        <h1>Welcome to BitzPrices</h1>
-        <p>Check current Bitcoin rate</p>
-        <Prices bpi={props.bpi} />
+        <h2>{data.Headline}</h2>
       </div>
     </Layout>
   )
 }
 
+/*
+Each Next.js page component allows us to fetch data server-side thanks to a function called getInitialProps. When this function is called, the initial page load is rendered server-side, which is great for SEO.
+*/
 
-Index.getInitialProps = async ({asPath}) => {
-
-  if (asPath !== '/favicon.ico'){
-
-  }
-  console.log(url);
-  const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
-  const data = await res.json()
-  return {
-    bpi: data.bpi
+Complex.getInitialProps = async ({asPath}) => {
+  if ( asPath !== '/favicon.ico' ) {
+    const content = await axios.post('http://localhost:3000/api/content', {asPath})
+    const { data } = content
+    return {
+      data: data[0]
+    }
   }
 }
 
-export default withRouter(Index)
+export default withRouter(Complex)

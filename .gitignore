@@ -1,5 +1,7 @@
+
 next.config.js
 
+.gitignore
 # dependencies
 /node_modules
 /.pnp

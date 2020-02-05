@@ -10,7 +10,13 @@ handler.use(middleware);
 
 handler.get( async (req, res) => {
   let doc = await req.db.collection('content').findOne()
-  console.log(doc);
+  res.json(doc);
+})
+
+handler.post( async (req, res) => {
+  const { asPath } = req.body
+  const url = `www.taskbooker.be${asPath}`
+  let doc = await req.db.collection('content').find({URL: url}).toArray()
   res.json(doc);
 })
 

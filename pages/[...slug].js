@@ -1,4 +1,3 @@
-import { withRouter } from 'next/router'
 import axios from 'axios'
 
 import Layout from '../components/Layout'
@@ -27,4 +26,4 @@ Complex.getInitialProps = async ({asPath}) => {
   }
 }
 
-export default withRouter(Complex)
+export default Complex

@@ -229,8 +229,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
@@ -243,13 +243,14 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 var SeoTable = function SeoTable(_ref) {
-  var slug = _ref.slug;
+  var slug = _ref.slug,
+      history = _ref.history;
 
-  // useEffect(() => fetchTableContent(slug), [slug])
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
       tableList = _useState[0],
       setTableList = _useState[1];
 
+  var router = Object(next_router__WEBPACK_IMPORTED_MODULE_2__["useRouter"])();
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     var params = slug.split('/');
     var category = params[1];
@@ -280,8 +281,13 @@ var SeoTable = function SeoTable(_ref) {
       });
     }
 
-    fetchTableContent(slug), [slug, tableList];
-  });
+    fetchTableContent(slug);
+  }, []);
+
+  var handleClick = function handleClick(url) {
+    url.split('/').shift();
+    console.log(url); // router.push()
+  };
 
   var renderTable = function renderTable() {
     return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Table"], {
@@ -291,43 +297,43 @@ var SeoTable = function SeoTable(_ref) {
       responsive: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25
+        lineNumber: 32
       },
       __self: this
     }, __jsx("thead", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26
+        lineNumber: 33
       },
       __self: this
     }, __jsx("tr", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 27
+        lineNumber: 34
       },
       __self: this
     }, __jsx("th", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 28
+        lineNumber: 35
       },
       __self: this
     }, "#"), __jsx("th", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 29
+        lineNumber: 36
       },
       __self: this
     }, "URL"), __jsx("th", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 30
+        lineNumber: 37
       },
       __self: this
     }, "1st Category"), __jsx("th", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 31
+        lineNumber: 38
       },
       __self: this
     }, "City"))), renderTableBody());
@@ -341,51 +347,47 @@ var SeoTable = function SeoTable(_ref) {
 
   var renderTableBody = function renderTableBody() {
     return tableList.map(function (t, i) {
-      return __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      return __jsx("tbody", {
         key: i,
-        href: "/".concat(slug),
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 52
+        onClick: function onClick(e) {
+          return handleClick(t.URL);
         },
-        __self: this
-      }, __jsx("tbody", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 59
         },
         __self: this
       }, __jsx("tr", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 60
         },
         __self: this
       }, __jsx("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 61
         },
         __self: this
       }, i), __jsx("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 62
         },
         __self: this
       }, t.URL), __jsx("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 63
         },
         __self: this
       }, renderLastCategory(t)), __jsx("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58
+          lineNumber: 64
         },
         __self: this
-      }, t.CityPostalcode))));
+      }, t.CityPostalcode)));
     });
   };
 
@@ -27182,13 +27184,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
-/* harmony import */ var _components_headline__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/headline */ "./components/headline/index.js");
-/* harmony import */ var _components_table__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/table */ "./components/table/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
+/* harmony import */ var _components_headline__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/headline */ "./components/headline/index.js");
+/* harmony import */ var _components_table__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/table */ "./components/table/index.js");
 
 var _jsxFileName = "/home/rubenberna/code/Redcarrots/BossData/SEO_shell/pages/[...slug].js";
 
@@ -27198,28 +27198,27 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
-
 var Complex = function Complex(_ref) {
   var content = _ref.content,
       slug = _ref.slug;
-  return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8
+    },
+    __self: this
+  }, __jsx(_components_headline__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    content: content,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 9
     },
     __self: this
-  }, __jsx(_components_headline__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    content: content,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10
-    },
-    __self: this
-  }), __jsx(_components_table__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }), __jsx(_components_table__WEBPACK_IMPORTED_MODULE_5__["default"], {
     slug: slug,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 10
     },
     __self: this
   }));
@@ -27243,7 +27242,7 @@ Complex.getInitialProps = function _callee(_ref2) {
           }
 
           _context.next = 4;
-          return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('http://localhost:3000/api/content', {
+          return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('http://localhost:3000/api/content', {
             asPath: asPath
           }));
 
@@ -27263,7 +27262,7 @@ Complex.getInitialProps = function _callee(_ref2) {
   });
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Complex));
+/* harmony default export */ __webpack_exports__["default"] = (Complex);
 
 /***/ }),
 

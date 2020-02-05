@@ -316,8 +316,8 @@ const Headline = ({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
@@ -330,13 +330,14 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const SeoTable = ({
-  slug
+  slug,
+  history
 }) => {
-  // useEffect(() => fetchTableContent(slug), [slug])
   const {
     0: tableList,
     1: setTableList
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const router = Object(next_router__WEBPACK_IMPORTED_MODULE_1__["useRouter"])();
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     const params = slug.split('/');
     const category = params[1];
@@ -351,8 +352,13 @@ const SeoTable = ({
       setTableList(shortList);
     }
 
-    fetchTableContent(slug), [slug, tableList];
-  });
+    fetchTableContent(slug);
+  }, []);
+
+  const handleClick = url => {
+    url.split('/').shift();
+    console.log(url); // router.push()
+  };
 
   const renderTable = () => {
     return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
@@ -362,43 +368,43 @@ const SeoTable = ({
       responsive: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25
+        lineNumber: 32
       },
       __self: undefined
     }, __jsx("thead", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26
+        lineNumber: 33
       },
       __self: undefined
     }, __jsx("tr", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 27
+        lineNumber: 34
       },
       __self: undefined
     }, __jsx("th", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 28
+        lineNumber: 35
       },
       __self: undefined
     }, "#"), __jsx("th", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 29
+        lineNumber: 36
       },
       __self: undefined
     }, "URL"), __jsx("th", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 30
+        lineNumber: 37
       },
       __self: undefined
     }, "1st Category"), __jsx("th", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 31
+        lineNumber: 38
       },
       __self: undefined
     }, "City"))), renderTableBody());
@@ -412,51 +418,45 @@ const SeoTable = ({
 
   const renderTableBody = () => {
     return tableList.map((t, i) => {
-      return __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      return __jsx("tbody", {
         key: i,
-        href: `/${slug}`,
+        onClick: e => handleClick(t.URL),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52
-        },
-        __self: undefined
-      }, __jsx("tbody", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 59
         },
         __self: undefined
       }, __jsx("tr", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 60
         },
         __self: undefined
       }, __jsx("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 61
         },
         __self: undefined
       }, i), __jsx("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 62
         },
         __self: undefined
       }, t.URL), __jsx("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 63
         },
         __self: undefined
       }, renderLastCategory(t)), __jsx("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58
+          lineNumber: 64
         },
         __self: undefined
-      }, t.CityPostalcode))));
+      }, t.CityPostalcode)));
     });
   };
 
@@ -2149,13 +2149,11 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "next/router");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "axios");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
-/* harmony import */ var _components_headline__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/headline */ "./components/headline/index.js");
-/* harmony import */ var _components_table__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/table */ "./components/table/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
+/* harmony import */ var _components_headline__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/headline */ "./components/headline/index.js");
+/* harmony import */ var _components_table__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/table */ "./components/table/index.js");
 var _jsxFileName = "/home/rubenberna/code/Redcarrots/BossData/SEO_shell/pages/[...slug].js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -2164,28 +2162,27 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-
 const Complex = ({
   content,
   slug
-}) => __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
+}) => __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 8
+  },
+  __self: undefined
+}, __jsx(_components_headline__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  content: content,
   __source: {
     fileName: _jsxFileName,
     lineNumber: 9
   },
   __self: undefined
-}, __jsx(_components_headline__WEBPACK_IMPORTED_MODULE_4__["default"], {
-  content: content,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 10
-  },
-  __self: undefined
-}), __jsx(_components_table__WEBPACK_IMPORTED_MODULE_5__["default"], {
+}), __jsx(_components_table__WEBPACK_IMPORTED_MODULE_4__["default"], {
   slug: slug,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 11
+    lineNumber: 10
   },
   __self: undefined
 }));
@@ -2198,7 +2195,7 @@ Complex.getInitialProps = async ({
   asPath
 }) => {
   if (asPath !== '/favicon.ico') {
-    const urlContent = await axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('http://localhost:3000/api/content', {
+    const urlContent = await axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:3000/api/content', {
       asPath
     });
     const {
@@ -2211,7 +2208,7 @@ Complex.getInitialProps = async ({
   }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Complex));
+/* harmony default export */ __webpack_exports__["default"] = (Complex);
 
 /***/ }),
 

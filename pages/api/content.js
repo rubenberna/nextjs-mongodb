@@ -14,6 +14,7 @@ handler.get( async (req, res) => {
 })
 
 handler.post( async (req, res) => {
+  console.log('got here');
   const { asPath } = req.body
   const url = `www.taskbooker.be${asPath}`
   let doc = await req.db.collection('content').find({URL: url}).toArray()

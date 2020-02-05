@@ -7,12 +7,12 @@ const SeoTable = ({slug, history}) => {
   const [tableList, setTableList] = useState([])
 
   const router = useRouter()
-
+  const baseURL = (process.env.NODE_ENV === 'development') ? 'http://localhost:3000' : 'https://seo-shell.now.sh'
   useEffect(() => {
     const params = slug.split('/')
     const category = params[1]
     async function fetchTableContent(slug) {
-      const tableContent = await axios.get('http://localhost:3000/api/content')
+      const tableContent = await axios.get(`${baseURL}/api/content`)
       const { data } = tableContent
       const filteredList = data.filter(t => t.Breadcrumb1 === category)
       const shortList = filteredList.splice(0, 200).sort()

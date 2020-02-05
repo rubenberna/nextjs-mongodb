@@ -1,5 +1,6 @@
 
 next.config.js
+now.json
 
 .gitignore
 # dependencies

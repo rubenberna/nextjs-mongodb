@@ -148,7 +148,14 @@ __webpack_require__.r(__webpack_exports__);
 const handler = next_connect__WEBPACK_IMPORTED_MODULE_0___default()();
 handler.use(_middleware_database__WEBPACK_IMPORTED_MODULE_1__["default"]);
 handler.get(async (req, res) => {
-  let doc = await req.db.collection('content').findOne();
+  let doc = await req.db.collection('content').find({}).project({
+    URL: 1,
+    CityPostalcode: 1,
+    Breadcrumb1category: 1,
+    Breadcrumb2category: 1,
+    Breadcrumb3category: 1,
+    Breadcrumb1: 1
+  }).toArray();
   res.json(doc);
 });
 handler.post(async (req, res) => {

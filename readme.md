@@ -5,7 +5,9 @@ To start this repo:
 3. npm run dev
 
 try urls lie:
+
 http://localhost:3000/cursussen/aartselaar-2630
+
 http://localhost:3000/tuinieren
 
 etc...

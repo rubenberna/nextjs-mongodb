@@ -9,7 +9,7 @@ const handler = nextConnect();
 handler.use(middleware);
 
 handler.get( async (req, res) => {
-  let doc = await req.db.collection('content').findOne()
+  let doc = await req.db.collection('content').find({}).project({ URL: 1, CityPostalcode: 1, Breadcrumb1category: 1, Breadcrumb2category: 1, Breadcrumb3category: 1, Breadcrumb1: 1}).toArray()
   res.json(doc);
 })
 

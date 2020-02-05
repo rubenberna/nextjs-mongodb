@@ -248,10 +248,10 @@ const Navbar = () => __jsx("nav", {
 
 /***/ }),
 
-/***/ "./components/Prices.js":
-/*!******************************!*\
-  !*** ./components/Prices.js ***!
-  \******************************/
+/***/ "./components/headline/index.js":
+/*!**************************************!*\
+  !*** ./components/headline/index.js ***!
+  \**************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -259,154 +259,211 @@ const Navbar = () => __jsx("nav", {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/home/rubenberna/code/Redcarrots/BossData/SEO_shell/components/Prices.js";
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/home/rubenberna/code/Redcarrots/BossData/SEO_shell/components/headline/index.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-class Prices extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
-  constructor(...args) {
-    super(...args);
+const Headline = ({
+  content
+}) => __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Jumbotron"], {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 4
+  },
+  __self: undefined
+}, __jsx("h1", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 5
+  },
+  __self: undefined
+}, content.Headline), __jsx("p", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 6
+  },
+  __self: undefined
+}, content.Paragraph1), __jsx("p", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 8
+  },
+  __self: undefined
+}, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+  variant: "primary",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 9
+  },
+  __self: undefined
+}, "Learn more")));
 
-    _defineProperty(this, "state", {
-      currency: 'EUR'
-    });
-  }
+/* harmony default export */ __webpack_exports__["default"] = (Headline);
 
-  render() {
-    const {
-      bpi
-    } = this.props;
-    const {
-      currency
-    } = this.state;
-    let list;
+/***/ }),
 
-    if (currency === 'USD') {
-      list = __jsx("li", {
-        className: "list-group-item",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 11
-        },
-        __self: this
-      }, "Bitcoin rate from ", bpi.USD.description, ":", " ", __jsx("span", {
-        className: "badge badge-primary",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 13
-        },
-        __self: this
-      }, bpi.USD.code), __jsx("strong", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 16
-        },
-        __self: this
-      }, bpi.USD.rate));
-    } else if (currency === 'GBP') {
-      list = __jsx("li", {
-        className: "list-group-item",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 19
-        },
-        __self: this
-      }, "Bitcoin rate from ", bpi.GBP.description, ":", " ", __jsx("span", {
-        className: "badge badge-primary",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 21
-        },
-        __self: this
-      }, bpi.GBP.code), __jsx("strong", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 24
-        },
-        __self: this
-      }, bpi.GBP.rate));
-    } else if (currency === 'EUR') {
-      list = __jsx("li", {
-        className: "list-group-item",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 27
-        },
-        __self: this
-      }, "Bitcoin rate from ", bpi.EUR.description, ":", " ", __jsx("span", {
-        className: "badge badge-primary",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 29
-        },
-        __self: this
-      }, bpi.EUR.code), __jsx("strong", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 32
-        },
-        __self: this
-      }, bpi.EUR.rate));
+/***/ "./components/table/index.js":
+/*!***********************************!*\
+  !*** ./components/table/index.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__);
+var _jsxFileName = "/home/rubenberna/code/Redcarrots/BossData/SEO_shell/components/table/index.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+const SeoTable = ({
+  slug
+}) => {
+  // useEffect(() => fetchTableContent(slug), [slug])
+  const {
+    0: tableList,
+    1: setTableList
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    const params = slug.split('/');
+    const category = params[1];
+
+    async function fetchTableContent(slug) {
+      const tableContent = await axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:3000/api/content');
+      const {
+        data
+      } = tableContent;
+      const filteredList = data.filter(t => t.Breadcrumb1 === category);
+      const shortList = filteredList.splice(0, 200).sort();
+      setTableList(shortList);
     }
 
-    return __jsx("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 37
-      },
-      __self: this
-    }, __jsx("ul", {
-      className: "list-group",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 38
-      },
-      __self: this
-    }, list), __jsx("br", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 41
-      },
-      __self: this
-    }), __jsx("select", {
-      onChange: e => this.setState({
-        currency: e.target.value
-      }),
-      className: "form-control",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 42
-      },
-      __self: this
-    }, __jsx("option", {
-      value: "USD",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 43
-      },
-      __self: this
-    }, "USD"), __jsx("option", {
-      value: "GBP",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 44
-      },
-      __self: this
-    }, "GBP"), __jsx("option", {
-      value: "EUR",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 45
-      },
-      __self: this
-    }, "EUR")));
-  }
+    fetchTableContent(slug), [slug, tableList];
+  });
 
-}
+  const renderTable = () => {
+    return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
+      striped: true,
+      bordered: true,
+      hover: true,
+      responsive: true,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 25
+      },
+      __self: undefined
+    }, __jsx("thead", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26
+      },
+      __self: undefined
+    }, __jsx("tr", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 27
+      },
+      __self: undefined
+    }, __jsx("th", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 28
+      },
+      __self: undefined
+    }, "#"), __jsx("th", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29
+      },
+      __self: undefined
+    }, "URL"), __jsx("th", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 30
+      },
+      __self: undefined
+    }, "1st Category"), __jsx("th", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 31
+      },
+      __self: undefined
+    }, "City"))), renderTableBody());
+  };
 
-/* harmony default export */ __webpack_exports__["default"] = (Prices);
+  const renderLastCategory = item => {
+    let lastCategory = item.Breadcrumb3category ? item.Breadcrumb3category : item.Breadcrumb2category ? item.Breadcrumb2category : item.Breadcrumb1category;
+    let proper = lastCategory.replace(/-/g, " ").charAt(0).toUpperCase() + lastCategory.replace(/-/g, " ").slice(1);
+    return proper;
+  };
+
+  const renderTableBody = () => {
+    return tableList.map((t, i) => {
+      return __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        key: i,
+        href: `/${slug}`,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 52
+        },
+        __self: undefined
+      }, __jsx("tbody", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 53
+        },
+        __self: undefined
+      }, __jsx("tr", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 54
+        },
+        __self: undefined
+      }, __jsx("th", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 55
+        },
+        __self: undefined
+      }, i), __jsx("th", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 56
+        },
+        __self: undefined
+      }, t.URL), __jsx("th", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 57
+        },
+        __self: undefined
+      }, renderLastCategory(t)), __jsx("th", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 58
+        },
+        __self: undefined
+      }, t.CityPostalcode))));
+    });
+  };
+
+  return renderTable();
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SeoTable);
 
 /***/ }),
 
@@ -2097,7 +2154,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
-/* harmony import */ var _components_Prices__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Prices */ "./components/Prices.js");
+/* harmony import */ var _components_headline__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/headline */ "./components/headline/index.js");
+/* harmony import */ var _components_table__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/table */ "./components/table/index.js");
 var _jsxFileName = "/home/rubenberna/code/Redcarrots/BossData/SEO_shell/pages/[...slug].js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -2106,30 +2164,31 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
 const Complex = ({
-  data
-}) => {
-  console.log(data);
-  return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10
-    },
-    __self: undefined
-  }, __jsx("div", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11
-    },
-    __self: undefined
-  }, __jsx("h2", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12
-    },
-    __self: undefined
-  }, data.Headline)));
-};
+  content,
+  slug
+}) => __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 9
+  },
+  __self: undefined
+}, __jsx(_components_headline__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  content: content,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 10
+  },
+  __self: undefined
+}), __jsx(_components_table__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  slug: slug,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 11
+  },
+  __self: undefined
+}));
 /*
 Each Next.js page component allows us to fetch data server-side thanks to a function called getInitialProps. When this function is called, the initial page load is rendered server-side, which is great for SEO.
 */
@@ -2139,14 +2198,15 @@ Complex.getInitialProps = async ({
   asPath
 }) => {
   if (asPath !== '/favicon.ico') {
-    const content = await axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('http://localhost:3000/api/content', {
+    const urlContent = await axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('http://localhost:3000/api/content', {
       asPath
     });
     const {
       data
-    } = content;
+    } = urlContent;
     return {
-      data: data[0]
+      content: data[0],
+      slug: asPath
     };
   }
 };
@@ -2285,6 +2345,17 @@ module.exports = require("prop-types-exact");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-bootstrap":
+/*!**********************************!*\
+  !*** external "react-bootstrap" ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-bootstrap");
 
 /***/ }),
 

@@ -22,9 +22,9 @@ const SeoTable = ({slug, history}) => {
   }, [])
 
   const handleClick = url => {
-    url.split('/').shift()
-    console.log(url);
-    // router.push()
+    const array = url.split('/')
+    array.shift()
+    router.push('/' + array.join('/'))
   }
 
   const renderTable = () => {
@@ -63,12 +63,22 @@ const SeoTable = ({slug, history}) => {
             <th>{renderLastCategory(t)}</th>
             <th>{t.CityPostalcode}</th>
           </tr>
+          <style jsx>{`
+            tr {
+              cursor: pointer;
+           }
+         `}</style>
         </tbody>
       )}
     )
   }
 
-  return renderTable()
+  return (
+    <>
+      <h5>Relative list of urls</h5>
+      {renderTable()}
+    </>
+  )
 }
 
 export default SeoTable

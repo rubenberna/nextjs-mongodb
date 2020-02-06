@@ -1,16 +1,32 @@
+import React, {useState, useEffect} from 'react'
 import fetch from 'isomorphic-unfetch'
 import Layout from '../components/Layout'
 import Prices from '../components/Prices'
 
-const Index = (props) => (
-  <Layout>
-    <div>
-      <h1>Welcome to BitzPrices</h1>
-      <p>Check current Bitcoin rate</p>
-      <Prices bpi={props.bpi} />
-    </div>
-  </Layout>
-)
+const Index = (props) => {
+  const [msg, setMsg] = useState('')
+
+  useEffect(() => {
+    async function triApi(){
+      const res = await fetch('http://localhost:3000/api/trial')
+      const {message} = await res.json()
+      console.log(message);
+      setMsg(message)
+    }
+    triApi()
+  }, [])
+
+  return (
+    <Layout>
+      <div>
+        <h1>Welcome to BitzPrices</h1>
+        <p>Check current Bitcoin rate</p>
+        <Prices bpi={props.bpi} />
+      </div>
+      <h3>Msg: {msg}</h3>
+    </Layout>
+  )
+}
 
 Index.getInitialProps = async () => {
   const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json')

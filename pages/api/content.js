@@ -6,6 +6,10 @@ import middleware from '../../middleware/database';
   (https://www.mongodb.com/blog/post/building-modern-applications-with-nextjs-and-mongodb)
 */
 
+const cors = Cors({
+  allowMethods: ['GET', 'POST'],
+})
+
 const handler = nextConnect();
 handler.use(middleware);
 
@@ -21,4 +25,4 @@ handler.post( async (req, res) => {
   res.json(doc);
 })
 
-export default handler
+export default cors(handler)

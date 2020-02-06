@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { useRouter } from 'next/router'
 import fetch from 'isomorphic-unfetch'
 import Layout from '../components/Layout'
 import Prices from '../components/Prices'
@@ -6,9 +7,11 @@ import Prices from '../components/Prices'
 const Index = (props) => {
   const [msg, setMsg] = useState('')
 
+  const router = useRouter()
+
   useEffect(() => {
     async function triApi(){
-      const res = await fetch('http://localhost:3000/api/trial')
+      const res = await fetch(`${router.pathname}api/trial`)
       const {message} = await res.json()
       console.log(message);
       setMsg(message)

@@ -3,11 +3,10 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import { Table } from 'react-bootstrap'
 
-const SeoTable = ({slug, history}) => {
+const SeoTable = ({slug, history, baseURL}) => {
   const [tableList, setTableList] = useState([])
 
   const router = useRouter()
-  const baseURL = (process.env.NODE_ENV === 'development') ? 'http://localhost:3000' : 'https://seo-shell.now.sh'
   useEffect(() => {
     const params = slug.split('/')
     const category = params[1]
@@ -21,7 +20,7 @@ const SeoTable = ({slug, history}) => {
     fetchTableContent(slug)
   }, [])
 
-  const handleClick = url => {
+  const goToUrl = url => {
     const array = url.split('/')
     array.shift()
     router.push('/' + array.join('/'))
@@ -34,7 +33,7 @@ const SeoTable = ({slug, history}) => {
           <tr>
             <th>#</th>
             <th>URL</th>
-            <th>1st Category</th>
+            <th>Last Category</th>
             <th>City</th>
           </tr>
         </thead>
@@ -56,10 +55,10 @@ const SeoTable = ({slug, history}) => {
   const renderTableBody = () => {
     return tableList.map((t, i) => {
       return (
-        <tbody key={i} onClick={ e => handleClick(t.URL) }>
+        <tbody key={i}>
           <tr>
             <th>{i}</th>
-            <th>{t.URL}</th>
+            <th onClick={ e => goToUrl(t.URL) }>{t.URL}</th>
             <th>{renderLastCategory(t)}</th>
             <th>{t.CityPostalcode}</th>
           </tr>

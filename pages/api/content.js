@@ -6,6 +6,7 @@ handler.use(middleware);
 
 handler.get( async (req, res) => {
   let doc = await req.db.collection('content').find({}).project({ URL: 1, CityPostalcode: 1, Breadcrumb1category: 1, Breadcrumb2category: 1, Breadcrumb3category: 1, Breadcrumb1: 1}).toArray()
+  res.setHeader('Access-Control-Allow-Origin', '*')
   res.json(doc);
 })
 

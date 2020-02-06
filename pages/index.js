@@ -13,7 +13,6 @@ const Index = (props) => {
     async function triApi(){
       const res = await fetch(`${router.pathname}api/trial`)
       const {message} = await res.json()
-      console.log(message);
       setMsg(message)
     }
     triApi()

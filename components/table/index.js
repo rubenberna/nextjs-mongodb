@@ -18,13 +18,12 @@ const SeoTable = ({slug, baseUrl}) => {
       setTableList(data)
     }
     fetchTableContent()
-    async function triApi(){
+    async function tryApi(){
       const res = await axios.get(`${baseUrl}/api/trial`)
       const {message} = res.data
-      console.log(message);
       setMsg(message)
     }
-    triApi()
+    tryApi()
   }, [])
 
   const goToUrl = url => {

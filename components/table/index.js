@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import { Table } from 'react-bootstrap'
 
-const SeoTable = ({slug, baseURL}) => {
+const SeoTable = ({slug, baseURL, origin}) => {
   const [tableList, setTableList] = useState([])
 
   const router = useRouter()
@@ -11,7 +11,7 @@ const SeoTable = ({slug, baseURL}) => {
     const params = slug.split('/')
     const category = params[1]
     async function fetchTableContent(slug) {
-      const tableContent = await axios.get(`${baseURL}/api/content`)
+      const tableContent = await axios.get(`https://${origin}/api/content`)
       const { data } = tableContent
       const filteredList = data.filter(t => t.Breadcrumb1 === category)
       const shortList = filteredList.splice(0, 200).sort()

@@ -3,21 +3,28 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import { Table } from 'react-bootstrap'
 
-const SeoTable = ({slug, origin}) => {
+const SeoTable = ({slug, baseUrl}) => {
   const [tableList, setTableList] = useState([])
+  const [msg, setMsg] = useState('')
 
-  const router = useRouter()
   useEffect(() => {
     const params = slug.split('/')
     const category = params[1]
     async function fetchTableContent() {
-      const tableContent = await axios.get(`https://${origin}/api/content`)
+      const tableContent = await axios.get(`${baseUrl}/api/content`)
       const { data } = tableContent
       const filteredList = data.filter(t => t.Breadcrumb1 === category)
       const shortList = filteredList.splice(0, 200).sort()
       setTableList(shortList)
     }
     fetchTableContent()
+    async function triApi(){
+      const res = await axios.get(`${baseUrl}/api/trial`)
+      const {message} = res.data
+      console.log(message);
+      setMsg(message)
+    }
+    triApi()
   }, [])
 
   const goToUrl = url => {
@@ -75,6 +82,7 @@ const SeoTable = ({slug, origin}) => {
   return (
     <>
       <h5>Relative list of urls</h5>
+      {msg}
       {renderTable()}
     </>
   )

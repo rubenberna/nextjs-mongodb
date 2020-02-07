@@ -4,11 +4,11 @@ import Layout from '../components/Layout'
 import Headline from '../components/headline'
 import SeoTable from '../components/table'
 
-const Complex = ({content, slug, origin}) => (
+const Complex = ({content, slug, origin, baseUrl}) => (
   <Layout>
     <h1>{slug}</h1>
     <Headline content={content}/>
-    <SeoTable slug={slug} origin={origin}/>
+    <SeoTable slug={slug} baseUrl={baseUrl}/>
   </Layout>
 )
 
@@ -21,12 +21,14 @@ Complex.getInitialProps = async (context) => {
   const { asPath } = context
   if ( asPath !== '/favicon.ico' ) {
     const { host } = context.req.headers
-    const urlContent = await axios.post(`https://${host}/api/content`, {asPath})
+    const protocol = process.env.NODE_ENV === 'development' ? 'http://' : 'https://'
+    const baseUrl = `${protocol}${host}`
+    const urlContent = await axios.post(`${baseUrl}/api/content`, {asPath})
     const { data } = urlContent
     return {
       content: data[0],
       slug: asPath,
-      origin: host
+      baseUrl
     }
   }
 }

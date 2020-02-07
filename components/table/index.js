@@ -7,15 +7,15 @@ const SeoTable = ({slug, baseUrl}) => {
   const [tableList, setTableList] = useState([])
   const [msg, setMsg] = useState('')
 
+  const router = useRouter()
+
   useEffect(() => {
     const params = slug.split('/')
     const category = params[1]
     async function fetchTableContent() {
-      const tableContent = await axios.get(`${baseUrl}/api/content`)
+      const tableContent = await axios.post(`${baseUrl}/api/table_content`, {category})
       const { data } = tableContent
-      const filteredList = data.filter(t => t.Breadcrumb1 === category)
-      const shortList = filteredList.splice(0, 200).sort()
-      setTableList(shortList)
+      setTableList(data)
     }
     fetchTableContent()
     async function triApi(){

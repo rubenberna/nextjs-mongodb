@@ -4,11 +4,11 @@ import Layout from '../components/Layout'
 import Headline from '../components/headline'
 import SeoTable from '../components/table'
 
-const Complex = ({content, slug, baseURL, origin}) => (
+const Complex = ({content, slug, origin}) => (
   <Layout>
     <h1>{slug}</h1>
     <Headline content={content}/>
-    <SeoTable slug={slug} baseURL={baseURL} origin={origin}/>
+    <SeoTable slug={slug} origin={origin}/>
   </Layout>
 )
 
@@ -18,7 +18,6 @@ Each Next.js page component allows us to fetch data server-side thanks to a func
 */
 
 Complex.getInitialProps = async (context) => {
-  const baseURL = (process.env.NODE_ENV === 'development') ? 'http://localhost:3000' : 'https://seo-shell.now.sh'
   const { asPath } = context
   if ( asPath !== '/favicon.ico' ) {
     const { host } = context.req.headers

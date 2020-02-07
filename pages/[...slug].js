@@ -26,7 +26,6 @@ Complex.getInitialProps = async (context) => {
     return {
       content: data[0],
       slug: asPath,
-      baseURL,
       origin: host
     }
   }
